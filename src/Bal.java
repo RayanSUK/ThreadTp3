@@ -1,10 +1,10 @@
 // BAL.java
 public class Bal {
     private String buffer;          // la "lettre"
-    private boolean available=false;
+    private boolean available=false; // true = pleine
 
     public synchronized void deposer(String lettre) throws InterruptedException {
-        while (available) wait();   // attendre que la BAL soit vide
+        while (available) wait();   // attendre que la BAL soit vide (tant que availabe = true ) le producteur attend
         buffer = lettre;
         available = true;
         notifyAll();
